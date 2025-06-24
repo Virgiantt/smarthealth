@@ -66,6 +66,7 @@
         cursor: pointer;
         transition: 0.3s;
         box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+        position: relative;
       }
 
       .btn-yes {
@@ -76,7 +77,6 @@
       .btn-no {
         background: #ff4757;
         color: white;
-        position: relative;
       }
 
       .btn-chat {
@@ -122,16 +122,18 @@
       function tampilkanAjakan() {
         document.getElementById("card").innerHTML = `
         <h1>Weekend Ini Ada Waktu?</h1>
-        <p>Aku kepikiran buat ngajak kamu jalan bareng weekend ini. Santai aja kalau kamu ada waktu, itung-itung yang kemarin katanya mau explore barenggg</p>
+        <p>Aku kepikiran buat ngajak kamu jalan bareng weekend ini🤔. Santai aja kalau kamu ada waktu, itung-itung yang kemarin katanya mau explore barenggg</p>
         <button class="btn-choice btn-yes" id="btnYes" onclick="pilihMau()">Mau</button>
         <button class="btn-choice btn-no" id="btnNo">Nggak Mau</button>
         <div id="pesanFinal" class="message-final"></div>
       `;
 
         const btnNo = document.getElementById("btnNo");
-        btnNo.addEventListener("mouseover", function () {
-          const maxX = 250;
-          const maxY = 150;
+
+        // Langsung pindah kalau mouse mendekat
+        btnNo.addEventListener("mousemove", function () {
+          const maxX = 200;
+          const maxY = 120;
           const randomX = Math.floor(Math.random() * maxX) - maxX / 2;
           const randomY = Math.floor(Math.random() * maxY) - maxY / 2;
           btnNo.style.transform = `translate(${randomX}px, ${randomY}px)`;
@@ -144,11 +146,10 @@
 
         const pesanFinal = document.getElementById("pesanFinal");
         pesanFinal.innerHTML = `
-        yeayyy! asikkk jalan nihh!<br><br>
-        <a class="btn-chat" href="https://wa.me/6281936704613" target="_blank">Chat aku yaa</a>
+        🎉 Yeayyy! Asikkk jalan nih! 🎉<br><br>
+        <a class="btn-chat" href="https://wa.me/6281936704613" target="_blank">chat aku yaa</a>
       `;
 
-        // Tambahkan class show buat animasi pop
         setTimeout(() => {
           pesanFinal.classList.add("show");
         }, 100);
